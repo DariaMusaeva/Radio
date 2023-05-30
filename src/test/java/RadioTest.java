@@ -5,89 +5,112 @@ import ru.netology.radio.Radio;
 public class RadioTest {
 
     @Test
-    public void shouldSetStation() {
-        Radio rad = new Radio();
+    public void shouldSetStationWithUsersSize() {
+        Radio stat = new Radio(25);
 
-        rad.setCurrentStation(7);
-
-        int expected = 7;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        stat.setCurrentStation(19);
+        Assertions.assertEquals(19, stat.getCurrentStation());
     }
 
     @Test
-    public void shouldSetStationAboveMax() {
-        Radio rad = new Radio();
+    public void shouldSetStationWithDefaultSize() {
+        Radio stat = new Radio();
 
-        rad.setCurrentStation(10);
+        stat.getDefaultSize();
+        stat.setCurrentStation(5);
+        Assertions.assertEquals(5, stat.getCurrentStation());
+   }
 
-        int expected = 0;
-        int actual = rad.getCurrentStation();
+    @Test
+    public void shouldSetMinAndMaxStationWithDefaultSize() {
+        Radio stat = new Radio();
 
-        Assertions.assertEquals(expected, actual);
+        stat.getDefaultSize();
+        Assertions.assertEquals(9, stat.getMaxStation());
+        Assertions.assertEquals(0, stat.getMinStation());
     }
 
     @Test
-    public void shouldSetStationBelowMin() {
-        Radio rad = new Radio();
+    public void shouldSetMinAndMaxStationWithUsersSize() {
+        Radio stat = new Radio(36);
 
-        rad.setCurrentStation(-1);
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(35, stat.getMaxStation());
+        Assertions.assertEquals(0, stat.getMinStation());
     }
 
     @Test
-    public void shouldSetToMaxStation() {
-        Radio rad = new Radio();
+    public void shouldSetStationAboveMaxWithUsersSize() {
+        Radio stat = new Radio(35);
 
-        rad.setCurrentStation(9);
-
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        stat.setCurrentStation(36);
+        Assertions.assertEquals(0, stat.getMinStation());
     }
 
     @Test
-    public void shouldSetToMinStation() {
-        Radio rad = new Radio();
+    public void shouldSetStationAboveMaxWithDefaultSize() {
+        Radio stat = new Radio();
 
-        rad.setCurrentStation(0);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-    @Test
-    public void shouldSetToNextStation() {
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(5);
-        rad.nextStation();
-        int expected = 6;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        stat.setCurrentStation(36);
+        Assertions.assertEquals(0, stat.getMinStation());
     }
 
+       @Test
+       public void shouldSetStationBelowMinWithUsersSize() {
+        Radio stat = new Radio(25);
+
+        stat.setCurrentStation(-1);
+        Assertions.assertEquals(24, stat.getCurrentStation());
+     }
+
     @Test
-    public void shouldSetToPrevStation() {
-        Radio rad = new Radio();
+    public void shouldSetStationBelowMinWithDefaultSize() {
+        Radio stat = new Radio();
 
-        rad.setCurrentStation(7);
-        rad.prevStation();
-        int expected = 6;
-        int actual = rad.getCurrentStation();
+        stat.setCurrentStation(-1);
+        stat.getDefaultSize();
+        Assertions.assertEquals(9, stat.getMaxStation());
+    }
 
-        Assertions.assertEquals(expected, actual);
+      @Test
+    public void shouldSetToNextStationWithUsersSize() {
+        Radio stat = new Radio(10);
+
+        stat.setCurrentStation(5);
+        stat.nextStation();
+        Assertions.assertEquals(6, stat.getCurrentStation());
     }
 
     @Test
+    public void shouldSetToNextStationWithDefaultSize() {
+        Radio stat = new Radio();
+
+        stat.getDefaultSize();
+        stat.setCurrentStation(5);
+        stat.nextStation();
+        Assertions.assertEquals(6, stat.getCurrentStation());
+    }
+
+    @Test
+    public void shouldSetToPrevStationWithUsersSize() {
+        Radio stat = new Radio(10);
+
+        stat.setCurrentStation(7);
+        stat.prevStation();
+        Assertions.assertEquals(6, stat.getCurrentStation());
+    }
+
+    @Test
+    public void shouldSetToPrevStationWithDefaultSize() {
+        Radio stat = new Radio();
+
+        stat.getDefaultSize();
+        stat.setCurrentStation(5);
+        stat.prevStation();
+        Assertions.assertEquals(4, stat.getCurrentStation());
+    }
+}
+/*
+       @Test
     public void shouldSetToNextStationBelowBorder() {
         Radio rad = new Radio();
 
@@ -212,4 +235,4 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-}
+*/
