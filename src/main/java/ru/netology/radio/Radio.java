@@ -14,7 +14,7 @@ public class Radio {
        maxStation = minStation + size - 1;
     }
 
-      public int getDefaultSize() {
+    public int getDefaultSize() {
         return maxStation = defaultSize - 1;
      }
 
@@ -50,21 +50,12 @@ public class Radio {
         setCurrentStation(currentStation);
     }
 
-
     public int maxVolume = 100;
     public int minVolume = 0;
     public int currentVolume = minVolume;
 
     public int getCurrentVolume() {
         return currentVolume;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
