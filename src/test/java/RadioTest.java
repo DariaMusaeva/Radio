@@ -50,7 +50,7 @@ public class RadioTest {
     public void shouldNotSetStationAboveMaxWithDefaultSize() {
         Radio rad = new Radio();
 
-        rad.setCurrentStation(36);
+        rad.setCurrentStation(11);
         Assertions.assertEquals(0, rad.getCurrentStation());
     }
 
@@ -131,7 +131,7 @@ public class RadioTest {
     public void shouldNotIncreaseVolume() {
         Radio rad = new Radio();
 
-        rad.setCurrentVolume(100);
+        rad.setCurrentVolume(101);
         rad.increaseVolume();
         Assertions.assertEquals(100, rad.getCurrentVolume());
     }
@@ -158,7 +158,7 @@ public class RadioTest {
     public void shouldNotDecreaseVolume() {
         Radio rad = new Radio();
 
-        rad.setCurrentVolume(0);
+        rad.setCurrentVolume(-1);
         rad.decreaseVolume();
         Assertions.assertEquals(0, rad.getCurrentVolume());
     }
